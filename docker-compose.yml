@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  strongswan:
+    build: .
+    container_name: strongswan-client
+    privileged: true
+    network_mode: host
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    volumes:
+      - ./config/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
+    restart: unless-stopped
